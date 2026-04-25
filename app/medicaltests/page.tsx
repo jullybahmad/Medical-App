@@ -35,15 +35,17 @@ export default async function MedicalTestsPage() {
           </thead>
 
           <tbody>
-            {result.rows.map((row, i) => (
-              <tr key={i}>
-                <td>{row.name}</td>
-                <td>{row.category}</td>
-                <td>{row.unit}</td>
-                <td>{row.normalmin.toLocaleString()}</td>
-                <td>{row.normalmax.toLocaleString()}</td>
-              </tr>
+            <tbody>
+                {result.rows.map((row: any, i: number) => (
+                <tr key={i}>
+                    <td>{row.name}</td>
+                    <td>{row.category}</td>
+                    <td>{row.unit}</td>
+                    <td>{row.normalmin.toLocaleString()}</td>
+                    <td>{row.normalmax.toLocaleString()}</td>
+                </tr>
             ))}
+</tbody>
           </tbody>
         </table>
       </div>
