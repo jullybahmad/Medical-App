@@ -1,5 +1,5 @@
-import { pool } from "@/lib/db";
 import ExportButtons from "./ExportButtons";
+import { pool } from "@/lib/db";
 
 export default async function MedicalTestsPage() {
   const result = await pool.query(`
@@ -35,17 +35,15 @@ export default async function MedicalTestsPage() {
           </thead>
 
           <tbody>
-            <tbody>
-                {result.rows.map((row: any, i: number) => (
-                <tr key={i}>
-                    <td>{row.name}</td>
-                    <td>{row.category}</td>
-                    <td>{row.unit}</td>
-                    <td>{row.normalmin.toLocaleString()}</td>
-                    <td>{row.normalmax.toLocaleString()}</td>
-                </tr>
+            {result.rows.map((row: any, i: number) => (
+              <tr key={i}>
+                <td>{row.name}</td>
+                <td>{row.category}</td>
+                <td>{row.unit}</td>
+                <td>{Number(row.normalmin).toLocaleString()}</td>
+                <td>{Number(row.normalmax).toLocaleString()}</td>
+              </tr>
             ))}
-</tbody>
           </tbody>
         </table>
       </div>
